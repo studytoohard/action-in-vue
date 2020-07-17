@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <b-button v-b-tooltip.hover title="Tooltip directive content">Hover Me</b-button>
+
+    <b-button id="tooltip-target-1">Hover Me</b-button>
+    <b-tooltip target="tooltip-target-1" triggers="hover">
+      I am tooltip
+      <b>component</b> content!
+    </b-tooltip>
   </div>
 </template>
 
 <script lang="ts">
+import "./app.scss";
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { BButton, BTooltip, VBTooltip } from "bootstrap-vue";
 
 @Component({
   components: {
-    HelloWorld
+    BButton,
+    BTooltip
+  },
+  directives: {
+    "b-tooltip": VBTooltip
   }
 })
 export default class App extends Vue {}
